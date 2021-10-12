@@ -1,0 +1,35 @@
+function manacherString(str) {
+  return '#' + str.split('').join('#') + '#';
+}
+
+function maxLcpsLength(s) {
+  if (s == null || s.length === 0) return 0;
+  const str = manacherString(s);
+  let C = -1;
+  let R = -1;
+  let max = 0;
+  const pArr = [];
+  debugger;
+  for (let i = 0; i <= str.length; i++) {
+    pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
+    while (i + pArr[i] < str.length && i - pArr[i] > -1) {
+      if (str[i + pArr[i]] === str[i - pArr[i]]) {
+        pArr[i]++;
+      } else {
+        break;
+      };
+    }
+
+    if (i + pArr[i] > R) {
+      R = i + pArr[i];
+      C = i;
+    }
+    
+    max = Math.max(max, pArr[i]);
+  }
+
+  return max - 1;
+}
+
+console.log(maxLcpsLength('sdgrfgfrghhbbbbhh'))
+// console.log(Math.max(9, 3));
