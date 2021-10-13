@@ -9,7 +9,7 @@ function maxLcpsLength(s) {
   let R = -1;
   let max = 0;
   const pArr = [];
-  debugger;
+  // debugger;
   for (let i = 0; i <= str.length; i++) {
     pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
     while (i + pArr[i] < str.length && i - pArr[i] > -1) {
@@ -27,9 +27,15 @@ function maxLcpsLength(s) {
     
     max = Math.max(max, pArr[i]);
   }
-
-  return max - 1;
+  let j = 0;
+  for (; j < pArr.length; j++) {
+    if (pArr[j] === max) break;
+  }
+  let start = Math.floor(j / 2) - Math.floor(max / 2);
+  (j % 2) && start++;
+  console.log(max, j, start);
+  return s.slice(start, start + max - 1);
 }
 
-console.log(maxLcpsLength('sdgrfgfrghhbbbbhh'))
-// console.log(Math.max(9, 3));
+console.log(maxLcpsLength("babad"))
+// console.log(Math.floor(9/4));

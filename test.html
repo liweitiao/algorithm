@@ -10,42 +10,20 @@
   
 </body>
 <script>
-
-
-function manacherString(str) {
-  return '#' + str.split('').join('#') + '#';
-}
-
-function maxLcpsLength(s) {
-  if (s == null || s.length === 0) return 0;
-  const str = manacherString(s);
-  let C = -1;
-  let R = -1;
-  let max = 0;
-  const pArr = [];
-  debugger;
-  for (let i = 0; i <= str.length; i++) {
-    pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
-    while (i + pArr[i] < str.length && i - pArr[i] > -1) {
-      if (str[i + pArr[i]] === str[i - pArr[i]]) {
-        pArr[i]++;
-      } else {
-        break;
-      };
-    }
-
-    if (i + pArr[i] > R) {
-      R = i + pArr[i];
-      C = i;
-    }
-    
-    max = Math.max(max, pArr[i]);
+var groupAnagrams = function(strs) {
+  const map = new Object();
+  debugger
+  for (let s of strs) {
+      const count = new Array(26).fill(0);
+      for (let c of s) {
+          count[c.charCodeAt() - 'a'.charCodeAt()]++;
+      }
+      map[count] ? map[count].push(s) : map[count] = [s];
   }
+  return Object.values(map);
+};
 
-  return max - 1;
-}
-
-console.log(maxLcpsLength('ccccc'))
+console.log(groupAnagrams(['dfg', 'gfd', 'grg', 'grgr', 'gewg', 'grrg', 'gwge', 'fgd']))
 
 </script>
 </html>
