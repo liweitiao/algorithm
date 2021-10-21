@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-<script>
+/**
+ * p10
+ */
+
 function printAllPermutations(str) {
   const arr = str.split('');
-  debugger;
   process(arr, 0);
 }
 
@@ -28,12 +19,31 @@ function process(arr, i) {
   }
 }
 
+
+/**
+ * 去重
+ */
+function process2(arr, i) {
+  if (i === arr.length) {
+    console.log(arr.toString());
+    return;
+  }
+  let set = new Set();
+  for (let j = i; j < arr.length; j++) {
+    if (!set.has(arr[j])) {
+      set.add(arr[j]);
+      swap(arr, i, j);
+      process2(arr, i + 1);
+      swap(arr, i, j);
+    }
+  }
+}
+
 function swap(arr, i, j) {
   let tmp = arr[i];
   arr[i] = arr[j];
   arr[j] = tmp;
 }
 
-printAllPermutations('abc')
-</script>
-</html>
+printAllPermutations('acc')
+
