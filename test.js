@@ -1,1 +1,1 @@
-console.log('aba'.localeCompare('abb')) 
+console.log(3^2^2);
