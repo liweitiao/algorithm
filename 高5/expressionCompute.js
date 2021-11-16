@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-<script>
 /**
  * p32
  */
 
- function getValue(str) {
-   debugger;
+function getValue(str) {
   return value(str, 0)[0];
 }
 
@@ -60,7 +47,7 @@ function getNum(que) {
   let cur = null;
   let num = 0;
   while (que.length) {
-    cur = que.unshift();
+    cur = que.shift();
     if (cur == '+') {
       add = true;
     } else if (cur == '-') {
@@ -73,8 +60,6 @@ function getNum(que) {
   return res;
 }
 
-let exp = "48*((70-65)-43)+8*1"
+let exp = "4*((7-1)-3)+8*1"
 debugger;
 console.log(getValue(exp));
-</script>
-</html>
