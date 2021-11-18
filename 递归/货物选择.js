@@ -11,7 +11,7 @@
    }
    return Math.max(
      process(weights, values, i + 1, alreadyweight, bag),
-     values[i] + process(weights, values, i + 1, alreadyweight + weights[i + 1], bag)
+     values[i] + process(weights, values, i + 1, alreadyweight + weights[i], bag)
    );
  }
 
